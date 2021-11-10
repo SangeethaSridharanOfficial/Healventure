@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Healventure</string>
+    <string name="signup"><a href="login">Signup</a></string>
+    <string name="forgotpwd"><a href="login">Forgot Password</a></string>
+</resources>
