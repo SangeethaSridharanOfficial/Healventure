@@ -1,10 +1,40 @@
 {
   "project_info": {
     "project_number": "889910359866",
+    "firebase_url": "https://healventureapp-default-rtdb.firebaseio.com",
     "project_id": "healventureapp",
     "storage_bucket": "healventureapp.appspot.com"
   },
   "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:889910359866:android:5515eae0e839653c1cc203",
+        "android_client_info": {
+          "package_name": "com.example.health_management"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "889910359866-h8qgj74cmkeupdjvavk8dbh8kml1tvo2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9THozzfYJ685YUdGRd_ni_ThwrdfAlOs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "889910359866-h8qgj74cmkeupdjvavk8dbh8kml1tvo2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
     {
       "client_info": {
         "mobilesdk_app_id": "1:889910359866:android:263bf42910cd69971cc203",
