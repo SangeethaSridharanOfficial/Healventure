@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="#04D5C1"
     tools:context=".view.Login">
+<!--    for testing -->
 
     <TextView
         android:id="@+id/header"
