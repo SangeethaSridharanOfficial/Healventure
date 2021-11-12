@@ -60,7 +60,7 @@
         app:layout_constraintVertical_bias="0.002" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/noti_holder"
+        android:id="@+id/phnNumber"
         android:layout_width="412dp"
         android:layout_height="76dp"
         android:layout_marginStart="1dp"

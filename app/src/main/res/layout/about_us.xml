@@ -15,7 +15,7 @@
         android:layout_marginBottom="691dp"
         android:background="#04D5C1"
         android:gravity="center"
-        android:text="NOTIFICATION"
+        android:text="ABOUT US"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -59,46 +59,48 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.002" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/phnNumber"
-        android:layout_width="412dp"
-        android:layout_height="76dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
-        android:background="#FFFFFF"
-
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="404dp"
+        android:layout_height="252dp"
+        android:layout_marginBottom="429dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header"
-        app:layout_constraintVertical_bias="0.038">
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/about" />
 
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="44dp"
-            android:layout_height="53dp"
-            android:layout_marginStart="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.432"
-            app:srcCompat="@drawable/info" />
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="382dp"
+        android:layout_height="252dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="137dp"
+        android:text="Healventure utilize the most recent dental innovation to offer incredible dental consideration to give a charming, calm ordeal. We pride ourselves on the consideration of our patients. We enjoy incredible making your first dental involvement with us pleasant and keeping up long haul associations with all of our patients.          "
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.0" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="351dp"
-            android:layout_height="79dp"
-            android:layout_marginStart="4dp"
-            android:text="Your Appointment has been booked for December 28th, 2021. please bring all your documents"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView4"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="383dp"
+        android:layout_height="155dp"
+        android:layout_marginBottom="19dp"
+        android:text="We love a good, long message from our readers. Leave us tips, inquiries, and messages and we will get back to you within 24 hours. email: healventure@gmail.com Phoneno: (437)6789067"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.886" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
