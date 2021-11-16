@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#C7FCF2"
+    tools:context=".view.BookAppointment"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:id="@+id/text_app"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="center"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textColor="@color/Text_Color"
+        android:text="Appointment Booking"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <View
+        android:id="@+id/view1"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/text_app"
+        android:layout_marginTop="20dp"
+        android:background="@color/bc_darkgreen" />
+
+    <LinearLayout
+        android:id="@+id/layoutdatepicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view1">
+
+        <Button
+            android:id="@+id/select_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@color/bc_darkgreen"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:gravity="center"
+            android:text="Select Date "
+            android:textColor="@color/Text_Color"
+            android:textSize="25sp" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/text_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:onClick="onCLickEditText"
+            android:focusableInTouchMode="false"
+            android:hint="date" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/datelayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layoutdatepicker"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn10am"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@color/bc_darkgreen"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="10:00pm"
+            android:textColor="@color/Text_Color"
+            android:textSize="15dp" />
+
+        <Button
+            android:id="@+id/btn10.30am"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@color/bc_darkgreen"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="10:30pm"
+            android:textColor="@color/Text_Color"
+            android:textSize="15dp" />
+
+        <Button
+            android:id="@+id/btn11am"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@color/bc_darkgreen"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="10:30pm"
+            android:textColor="@color/Text_Color"
+            android:textSize="15dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/datelayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        android:layout_below="@id/datelayout1">
+        <Button
+            android:id="@+id/btn11.30am"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/bc_darkgreen"
+            android:layout_margin="20dp"
+            android:text="11:30am"
+            android:textSize="15dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:textColor="@color/Text_Color"/>
+        <Button
+            android:id="@+id/btn12.00pm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/bc_darkgreen"
+            android:text="12:00pm"
+            android:textSize="15dp"
+            android:layout_margin="20dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:textColor="@color/Text_Color"/>
+        <Button
+            android:id="@+id/btn12.30am"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/bc_darkgreen"
+            android:text="12:30pm"
+            android:textSize="15dp"
+            android:layout_margin="20dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:textColor="@color/Text_Color"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/datelayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/datelayout2"
+
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn01.00am"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@color/bc_darkgreen"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="01:00pm"
+            android:textColor="@color/Text_Color"
+            android:textSize="15dp" />
+
+        <Button
+            android:id="@+id/btn01.30pm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@color/bc_darkgreen"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="01:30pm"
+            android:textColor="@color/Text_Color"
+            android:textSize="15dp" />
+
+        <Button
+            android:id="@+id/btn02.00am"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="@color/bc_darkgreen"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="02:00pm"
+            android:textColor="@color/Text_Color"
+            android:textSize="15dp" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/datelayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        android:layout_below="@id/datelayout3">
+        <Button
+            android:id="@+id/btn02.30am"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/bc_darkgreen"
+            android:layout_margin="20dp"
+            android:text="02:30am"
+            android:textSize="15dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:textColor="@color/Text_Color"/>
+        <Button
+            android:id="@+id/btn03.00pm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/bc_darkgreen"
+            android:text="03:00pm"
+            android:textSize="15dp"
+            android:layout_margin="20dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:textColor="@color/Text_Color"/>
+        <Button
+            android:id="@+id/btn03.30am"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/bc_darkgreen"
+            android:text="03:30pm"
+            android:textSize="15dp"
+            android:layout_margin="20dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:textColor="@color/Text_Color"/>
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/btn_bookapp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/datelayout4"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textSize="25dp"
+        android:textColor="@color/Text_Color"
+        android:layout_margin="20dp"
+        android:text="Book Appointment"/>
+</RelativeLayout>
