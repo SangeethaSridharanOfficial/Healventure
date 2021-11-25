@@ -2,41 +2,87 @@ package com.example.healventureapp.view;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.healventureapp.MainActivity;
+
 import com.example.healventureapp.R;
+import com.example.healventureapp.model.LoginModel;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.UUID;
+
 public class Login extends AppCompatActivity {
-    private DatabaseReference lDatabase;
+    private DatabaseReference healventureDatabase;
     private DatabaseReference loginEndPoint;
+    EditText email, password;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        lDatabase = FirebaseDatabase.getInstance().getReference();
-        loginEndPoint = lDatabase.child("login");
-        Toast.makeText(this, "Firebase Connected", Toast.LENGTH_LONG).show();
+        healventureDatabase = FirebaseDatabase.getInstance().getReference();
+        loginEndPoint = healventureDatabase.child("login");
+        email = findViewById(R.id.username);
+        password = findViewById(R.id.password);
     }
 
     public void loginClicked(View view) {
-        setContentView(R.layout.main_page_activity);
-//        Intent openPage = new Intent(Intent.ACTION_SEND);
-//        if (openPage.resolveActivity(getPackageManager()) != null) {
-//            startActivity(openPage);
-        loginEndPoint.setValue("Test").addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                System.out.println("Error: " + e.getMessage());
-            }
-        });
+
+        if(!email.getText().toString().equals("") && !password.getText().toString().equals("") && email != null && password != null){
+            Intent mainPage = new Intent(this, MainPageActivity.class);
+            LoginModel login = new LoginModel();
+            UUID token = UUID.randomUUID();
+            login.setEmail(email.getText().toString());
+            login.setPassword(password.getText().toString());
+            mainPage.putExtra("loginObj",login);
+            loginEndPoint.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                    if(task.isSuccessful()){
+                        boolean isUserAvailable = false;
+                        for(DataSnapshot doc: task.getResult().getChildren()){
+                            Map<String,String> user=(HashMap<String, String>)doc.getValue();
+                            if(user.get("email").equals(email.getText().toString())){
+                                isUserAvailable = true;
+                            }
+                        }
+                        if(isUserAvailable == false){
+                            Toast.makeText(Login.this,"Invalid User!! Please Register", Toast.LENGTH_SHORT).show();
+                        }else{
+                            loginEndPoint.child(email.getText().toString()).setValue(login).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(Login.this,"OOPS!! Something wrong. Try again!", Toast.LENGTH_SHORT).show();
+                                }
+                            }).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+
+                                }
+                            });
+                            startActivity(mainPage);
+                        }
+                    }else{
+                        Toast.makeText(Login.this,"There is no data", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+        }else{
+            Toast.makeText(Login.this,"Please enter username and password to proceed!!", Toast.LENGTH_SHORT).show();
+        }
     }
 }

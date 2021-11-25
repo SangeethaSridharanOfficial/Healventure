@@ -1,6 +1,8 @@
 package com.example.healventureapp.model;
 
-public class Login {
+import java.io.Serializable;
+
+public class LoginModel implements Serializable {
     private String email;
     private String password;
 
