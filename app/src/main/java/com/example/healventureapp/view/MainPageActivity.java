@@ -42,4 +42,17 @@ public class MainPageActivity extends AppCompatActivity {
         startActivity(mainPage);
     }
 
+    public void onCLickFeedback(View v){
+        Intent mainPage = new Intent(this, Feedback.class);
+        mainPage.putExtra("testData","test");
+        startActivity(mainPage);
+    }
+
+
+    public void onCLickAboutUs(View v){
+        Intent mainPage = new Intent(this, AboutUs.class);
+        mainPage.putExtra("testData","test");
+        startActivity(mainPage);
+    }
+
 }
