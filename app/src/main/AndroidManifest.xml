@@ -13,6 +13,7 @@
         <activity android:name=".view.BookAppointment"></activity>
         <activity android:name=".view.Feedback"></activity>
         <activity android:name=".view.AboutUs"></activity>
+        <activity android:name=".view.ForgotPassword"></activity>
 
         <activity
             android:name=".view.Login"

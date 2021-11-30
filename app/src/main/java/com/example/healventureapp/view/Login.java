@@ -85,4 +85,11 @@ public class Login extends AppCompatActivity {
             Toast.makeText(Login.this,"Please enter username and password to proceed!!", Toast.LENGTH_SHORT).show();
         }
     }
+
+
+    public void onCLickForgotPassword(View view) {
+        Intent login = new Intent(this, ForgotPassword.class);
+        login.putExtra("testData","test");
+        startActivity(login);
+    }
 }

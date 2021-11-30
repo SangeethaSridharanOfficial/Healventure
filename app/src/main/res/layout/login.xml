@@ -145,6 +145,7 @@
             android:layout_height="30dp"
             android:layout_marginTop="8dp"
             android:text="@string/forgotpwd"
+            android:onClick="onCLickForgotPassword"
             android:textAlignment="center"
             android:textSize="18sp"
             android:textColorLink="@color/black"
