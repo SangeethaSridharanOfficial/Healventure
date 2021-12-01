@@ -14,7 +14,8 @@
         <activity android:name=".view.Feedback"></activity>
         <activity android:name=".view.AboutUs"></activity>
         <activity android:name=".view.ForgotPassword"></activity>
-
+        <activity android:name=".view.Signup"></activity>
+        <activity android:name=".view.MyReport"></activity>
         <activity
             android:name=".view.Login"
             android:exported="true">
