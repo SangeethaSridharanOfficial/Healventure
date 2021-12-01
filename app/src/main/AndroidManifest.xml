@@ -17,7 +17,7 @@
         <activity android:name=".view.Signup"></activity>
         <activity android:name=".view.MyReport"></activity>
         <activity
-            android:name=".view.Login"
+            android:name=".view.NotificationDoctor"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
