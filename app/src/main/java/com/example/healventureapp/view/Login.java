@@ -40,7 +40,6 @@ public class Login extends AppCompatActivity {
     }
 
     public void loginClicked(View view) {
-
         if(!email.getText().toString().equals("") && !password.getText().toString().equals("") && email != null && password != null){
             Intent mainPage = new Intent(this, MainPageActivity.class);
             LoginModel login = new LoginModel();
