@@ -45,6 +45,7 @@ public class BookAppointment extends AppCompatActivity {
         new DatePickerDialog(this, date, myCalendar
                 .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                 myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+
     }
 
 
