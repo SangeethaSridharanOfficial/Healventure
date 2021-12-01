@@ -44,7 +44,6 @@ public class Login extends AppCompatActivity {
         if(!email.getText().toString().equals("") && !password.getText().toString().equals("") && email != null && password != null){
             Intent mainPage = new Intent(this, MainPageActivity.class);
             LoginModel login = new LoginModel();
-            UUID token = UUID.randomUUID();
             login.setEmail(email.getText().toString());
             login.setPassword(password.getText().toString());
             mainPage.putExtra("loginObj",login);
@@ -60,36 +59,32 @@ public class Login extends AppCompatActivity {
                             }
                         }
                         if(isUserAvailable == false){
-                            Toast.makeText(Login.this,"Invalid User!! Please Register", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this,"Invalid User!! Please Register", Toast.LENGTH_LONG).show();
                         }else{
-                            loginEndPoint.child(email.getText().toString()).setValue(login).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(Login.this,"OOPS!! Something wrong. Try again!", Toast.LENGTH_SHORT).show();
-                                }
-                            }).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void unused) {
 
-                                }
-                            });
                             startActivity(mainPage);
                         }
                     }else{
-                        Toast.makeText(Login.this,"There is no data", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this,"There is no data", Toast.LENGTH_LONG).show();
                     }
                 }
             });
 
         }else{
-            Toast.makeText(Login.this,"Please enter username and password to proceed!!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Login.this,"Please enter username and password to proceed!!", Toast.LENGTH_LONG).show();
         }
     }
 
 
     public void onCLickForgotPassword(View view) {
         Intent login = new Intent(this, ForgotPassword.class);
-        login.putExtra("testData","test");
+        login.putExtra("testData", "test");
         startActivity(login);
+    }
+
+    public void signupClicked(View view){
+        Intent signupPage = new Intent(this, Signup.class);
+        signupPage.putExtra("email",email.getText().toString());
+        startActivity(signupPage);
     }
 }
