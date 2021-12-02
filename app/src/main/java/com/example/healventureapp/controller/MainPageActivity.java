@@ -12,15 +12,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.healventureapp.R;
 import com.example.healventureapp.model.LoginModel;
 public class MainPageActivity extends AppCompatActivity {
+    String username;
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page_activity);
         Intent intent = getIntent();
 
-        if(intent.hasExtra("loginObj")){
-            LoginModel login = (LoginModel) intent.getSerializableExtra("loginObj");
-            Toast.makeText(this, "Welcome "+login.getEmail(), Toast.LENGTH_LONG).show();
+        if(intent.hasExtra("username")){
+
+            username = intent.getStringExtra("username");
         }
     }
     @Override
@@ -35,7 +37,7 @@ public class MainPageActivity extends AppCompatActivity {
             // action with ID action_refresh was selected
             case R.id.profile:
                 Intent mainPage = new Intent(this, Profile.class);
-                mainPage.putExtra("testData","test");
+                mainPage.putExtra("username",username);
                 startActivity(mainPage);
 //                Toast.makeText(this, "Refresh selected", Toast.LENGTH_SHORT)
 //                        .show();
@@ -43,7 +45,7 @@ public class MainPageActivity extends AppCompatActivity {
             // action with ID action_settings was selected
             case R.id.notification:
                 Intent mainPage1 = new Intent(this, NotificationPatients.class);
-                mainPage1.putExtra("testData","test");
+                mainPage1.putExtra("username",username);
                 startActivity(mainPage1);
                 Toast.makeText(this, "Settings selected", Toast.LENGTH_SHORT)
                         .show();
@@ -57,13 +59,13 @@ public class MainPageActivity extends AppCompatActivity {
 
     public void onCLickBookApp(View v){
         Intent mainPage = new Intent(this, BookAppointment.class);
-        mainPage.putExtra("testData","test");
+        mainPage.putExtra("username",username);
         startActivity(mainPage);
     }
 
     public void onCLickReport(View v){
         Intent mainPage = new Intent(this, MyReport.class);
-        mainPage.putExtra("testData","test");
+        mainPage.putExtra("username",username);
         startActivity(mainPage);
     }
 

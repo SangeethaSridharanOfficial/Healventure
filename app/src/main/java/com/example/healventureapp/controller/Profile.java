@@ -29,11 +29,7 @@ public class Profile extends AppCompatActivity {
         switch (item.getItemId()) {
             // action with ID action_refresh was selected
             case R.id.profile:
-                Intent mainPage = new Intent(this, Profile.class);
-                mainPage.putExtra("testData","test");
-                startActivity(mainPage);
-//                Toast.makeText(this, "Refresh selected", Toast.LENGTH_SHORT)
-//                        .show();
+
                 break;
             // action with ID action_settings was selected
             case R.id.notification:

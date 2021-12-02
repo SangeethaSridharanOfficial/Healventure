@@ -45,7 +45,7 @@ public class BookAppointment extends AppCompatActivity {
     DatabaseReference bookappointmentEndPoint;
     Button bookApp;
     Button timeSelected;
-    String time;
+    String username;
     BookAppointmentModel bAmodel;
 
     @Override
@@ -58,16 +58,29 @@ public class BookAppointment extends AppCompatActivity {
         this.setTitle("BookAppointment");
         databaseReference = FirebaseDatabase.getInstance().getReference();
         bookappointmentEndPoint = databaseReference.child("bookAppointment");
+        Intent user = getIntent();
+        System.out.println("user"+ user.getStringExtra("username"));
+        if (user.hasExtra("username")) {
+
+            username = user.getStringExtra("username");
+
+
+        } else {
+            Intent mainPage = new Intent(this, Login.class);
+
+            startActivity(mainPage);
+        }
     }
+
     public void onCLickBookApps(View v) {
         String date = date_text.getText().toString();
         String time = txtTim.getText().toString();
-        BookAppointmentModel btp = new BookAppointmentModel(date, time);
+        BookAppointmentModel btp = new BookAppointmentModel(date, time, username);
         System.out.println(btp + "-------id for book appointment");
         bookappointmentEndPoint.child(bookappointmentEndPoint.push().getKey()).setValue(btp).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(BookAppointment.this,"OOPS!! Something wrong. Try again!", Toast.LENGTH_LONG).show();
+                Toast.makeText(BookAppointment.this, "OOPS!! Something wrong. Try again!", Toast.LENGTH_LONG).show();
             }
         }).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
@@ -76,9 +89,10 @@ public class BookAppointment extends AppCompatActivity {
             }
         });
         Intent mainPage = new Intent(this, Payment.class);
-        mainPage.putExtra("testData","test");
+        mainPage.putExtra("testData", "test");
         startActivity(mainPage);
     }
+
     final Calendar myCalendar = Calendar.getInstance();
     DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
         @RequiresApi(api = Build.VERSION_CODES.N)
@@ -92,21 +106,25 @@ public class BookAppointment extends AppCompatActivity {
             updateLabel();
         }
     };
+
     public void onCLickEditText(View v) {
         new DatePickerDialog(this, date, myCalendar
                 .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                 myCalendar.get(Calendar.DAY_OF_MONTH)).show();
     }
+
     public void onClickTimeSelected(View v) {
         timeSelected = (Button) v;
         txtTim.setText(timeSelected.getText());
     }
+
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void updateLabel() {
         String myFormat = "MM/dd/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         date_text.setText(sdf.format(myCalendar.getTime()));
     }
+
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
@@ -118,7 +136,7 @@ public class BookAppointment extends AppCompatActivity {
             // action with ID action_refresh was selected
             case R.id.profile:
                 Intent mainPage = new Intent(this, Profile.class);
-                mainPage.putExtra("testData","test");
+                mainPage.putExtra("testData", "test");
                 startActivity(mainPage);
 //                Toast.makeText(this, "Refresh selected", Toast.LENGTH_SHORT)
 //                        .show();
@@ -127,7 +145,7 @@ public class BookAppointment extends AppCompatActivity {
             case R.id.notification:
 
                 Intent mainPage1 = new Intent(this, NotificationPatients.class);
-                mainPage1.putExtra("testData","test");
+                mainPage1.putExtra("testData", "test");
                 startActivity(mainPage1);
                 Toast.makeText(this, "Settings selected", Toast.LENGTH_SHORT)
                         .show();

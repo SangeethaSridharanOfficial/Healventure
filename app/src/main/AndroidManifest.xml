@@ -19,6 +19,7 @@
         <activity android:name=".controller.Services"></activity>
         <activity android:name=".controller.MyReport"></activity>
         <activity android:name=".controller.UploadReport"></activity>
+            <activity android:name=".controller.DoctorMainPage"></activity>
         <activity android:name=".controller.Profile"></activity>
         <activity android:name=".controller.Payment"></activity>
         <activity android:name=".controller.NotificationDoctor"></activity>

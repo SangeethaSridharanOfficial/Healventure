@@ -87,7 +87,6 @@ public class MyReport extends AppCompatActivity {
                         } else {
                             reportLinearLayout.setBackground(border);
                         }
-
                         reportLinearLayout.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {

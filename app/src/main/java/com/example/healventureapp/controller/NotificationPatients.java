@@ -80,11 +80,6 @@ public class NotificationPatients extends AppCompatActivity {
             // action with ID action_settings was selected
             case R.id.notification:
 
-                Intent mainPage1 = new Intent(this, NotificationPatients.class);
-                mainPage1.putExtra("testData","test");
-                startActivity(mainPage1);
-                Toast.makeText(this, "Settings selected", Toast.LENGTH_SHORT)
-                        .show();
                 break;
             default:
                 break;

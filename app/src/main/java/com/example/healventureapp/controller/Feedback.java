@@ -18,7 +18,7 @@ public class Feedback extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.feedback);
-
+        setTitle("Feedback");
         // initiate rating bar and a button
         final RatingBar simpleRatingBar = (RatingBar) findViewById(R.id.ratingBar1);
         Button submitButton = (Button) findViewById(R.id.btnGet1);
