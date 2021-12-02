@@ -69,7 +69,7 @@ public class Login extends AppCompatActivity {
         if(!email.getText().toString().equals("") && !password.getText().toString().equals("") && email != null && password != null && selectedRole > 0){
             role = (RadioButton) findViewById(selectedRole);
             if(role.getText().toString().toLowerCase().equals("doctor")){
-                Intent docMainPage = new Intent(Login.this, MainPageActivity.class);
+                Intent docMainPage = new Intent(Login.this, DoctorMainPage.class);
                 docMainPage.putExtra("username",role.getText().toString());
                 startActivity(docMainPage);
             }else{
