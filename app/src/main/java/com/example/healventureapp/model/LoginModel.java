@@ -1,10 +1,9 @@
 package com.example.healventureapp.model;
 
-import java.io.Serializable;
-
-public class LoginModel implements Serializable {
+public class LoginModel {
     private String email;
     private String password;
+    private String role;
 
     public String getEmail() {
         return email;
@@ -20,5 +19,22 @@ public class LoginModel implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "LoginModel{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                '}';
     }
 }

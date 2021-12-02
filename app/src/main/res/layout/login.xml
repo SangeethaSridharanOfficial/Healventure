@@ -98,7 +98,7 @@
         app:layout_constraintTop_toBottomOf="@+id/credentialWrapper">
 
         <RadioGroup
-            android:id="@+id/roleButton"
+            android:id="@+id/roleGrp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -138,7 +138,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/pwdLink"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/roleButton" />
+            app:layout_constraintTop_toBottomOf="@id/roleGrp" />
 
         <TextView
             android:id="@+id/pwdLink"
@@ -153,7 +153,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/signupLink"
-            app:layout_constraintTop_toBottomOf="@id/roleButton" />
+            app:layout_constraintTop_toBottomOf="@id/roleGrp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

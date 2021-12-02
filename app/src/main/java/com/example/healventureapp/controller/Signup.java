@@ -36,7 +36,6 @@ public class Signup extends AppCompatActivity {
         int selectedId = gender.getCheckedRadioButtonId();
         selectedGender = (RadioButton) findViewById(selectedId);
         if(selectedGender == null) result = false;
-        System.out.println("coming here " + fname.getText().toString().equals(""));
         if(!pwd.getText().toString().equals(cfrmPwd.getText().toString())) result = false;
         return result;
     }
