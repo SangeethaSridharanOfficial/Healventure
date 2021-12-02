@@ -3,7 +3,6 @@
     package="com.example.healventureapp">
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <application
         android:allowBackup="true"
@@ -22,6 +21,8 @@
         <activity android:name=".controller.MyReport"></activity>
         <activity android:name=".controller.UploadReport"></activity>
         <activity android:name=".controller.Payment"></activity>
+        <activity android:name=".controller.Services"></activity>
+
         <activity
             android:name=".controller.Login"
             android:exported="true">

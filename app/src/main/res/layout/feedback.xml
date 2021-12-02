@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="#ADF3DE"
     tools:context=".controller.Feedback">
-    <!--    for testing -->
 
 
     <TextView
@@ -14,7 +13,7 @@
         android:layout_width="417dp"
         android:layout_height="53dp"
         android:background="#04D5C1"
-        android:gravity="center"
+        android:gravity="center|left"
         android:text="FEEDBACK"
         android:textSize="30dp"
         android:textStyle="bold"

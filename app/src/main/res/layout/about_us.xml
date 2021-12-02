@@ -93,7 +93,7 @@
         android:layout_width="383dp"
         android:layout_height="155dp"
         android:layout_marginBottom="19dp"
-        android:text="We love a good, long message from our readers. Leave us tips, inquiries, and messages and we will get back to you within 24 hours. email: healventure@gmail.com Phoneno: (437)6789067"
+        android:text="Email: healventure@gmail.com Phoneno: (437)6789067"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
