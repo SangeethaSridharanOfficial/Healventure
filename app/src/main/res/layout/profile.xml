@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ADF3DE"
-    tools:context=".view.Login">
+    tools:context=".controller.Login">
     <!--    for testing -->
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -89,7 +89,7 @@
         app:layout_constraintVertical_bias="0.002" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/phn_number"
+        android:id="@+id/card_info"
         android:layout_width="356dp"
         android:layout_height="51dp"
         android:background="#FFFFFF"
@@ -99,7 +99,7 @@
         app:layout_constraintTop_toBottomOf="@+id/pt_name" >
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/card_info_text"
             android:layout_width="264dp"
             android:layout_height="35dp"
             android:layout_marginStart="27dp"
@@ -122,7 +122,7 @@
         app:layout_constraintBottom_toTopOf="@+id/prblmName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phn_number">
+        app:layout_constraintTop_toBottomOf="@+id/card_info">
 
         <TextView
             android:id="@+id/textView8"

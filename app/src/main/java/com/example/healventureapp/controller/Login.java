@@ -1,4 +1,4 @@
-package com.example.healventureapp.view;
+package com.example.healventureapp.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,17 +13,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.healventureapp.R;
 import com.example.healventureapp.model.LoginModel;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.UUID;
 
 public class Login extends AppCompatActivity {
     private DatabaseReference healventureDatabase;
@@ -40,11 +36,9 @@ public class Login extends AppCompatActivity {
     }
 
     public void loginClicked(View view) {
-
         if(!email.getText().toString().equals("") && !password.getText().toString().equals("") && email != null && password != null){
             Intent mainPage = new Intent(this, MainPageActivity.class);
             LoginModel login = new LoginModel();
-            UUID token = UUID.randomUUID();
             login.setEmail(email.getText().toString());
             login.setPassword(password.getText().toString());
             mainPage.putExtra("loginObj",login);
@@ -60,36 +54,32 @@ public class Login extends AppCompatActivity {
                             }
                         }
                         if(isUserAvailable == false){
-                            Toast.makeText(Login.this,"Invalid User!! Please Register", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this,"Invalid User!! Please Register", Toast.LENGTH_LONG).show();
                         }else{
-                            loginEndPoint.child(email.getText().toString()).setValue(login).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(Login.this,"OOPS!! Something wrong. Try again!", Toast.LENGTH_SHORT).show();
-                                }
-                            }).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void unused) {
 
-                                }
-                            });
                             startActivity(mainPage);
                         }
                     }else{
-                        Toast.makeText(Login.this,"There is no data", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this,"There is no data", Toast.LENGTH_LONG).show();
                     }
                 }
             });
 
         }else{
-            Toast.makeText(Login.this,"Please enter username and password to proceed!!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(Login.this,"Please enter username and password to proceed!!", Toast.LENGTH_LONG).show();
         }
     }
 
 
     public void onCLickForgotPassword(View view) {
         Intent login = new Intent(this, ForgotPassword.class);
-        login.putExtra("testData","test");
+        login.putExtra("testData", "test");
         startActivity(login);
+    }
+
+    public void signupClicked(View view){
+        Intent signupPage = new Intent(this, Signup.class);
+        signupPage.putExtra("email",email.getText().toString());
+        startActivity(signupPage);
     }
 }

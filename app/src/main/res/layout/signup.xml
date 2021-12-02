@@ -2,103 +2,135 @@
 <ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="wrap_content"
     android:layout_width="match_parent">
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#C7FCF2">
+        android:background="#04D5C1"
+        tools:context=".controller.Signup">
 
-<!--        <RelativeLayout-->
-<!--            android:id="@+id/relative_image"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="300dp">-->
-
-        <LinearLayout
-            android:id="@+id/layoutfname"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_margin="5dp"
-            android:background="#C7FCF2"
-            android:orientation="horizontal">
-            <EditText
-                android:id="@+id/f_name"
-                android:layout_width="200dp"
-                android:textAlignment="center"
-                android:layout_marginRight="2dp"
-                android:background="@color/white"
-                android:layout_height="match_parent"
-                android:hint="First Name"/>
-            <EditText
-                android:id="@+id/fL_name"
-                android:layout_width="200dp"
-                android:textAlignment="center"
-                android:layout_marginLeft="5dp"
-                android:layout_height="match_parent"
-                android:background="@color/white"
-                android:hint="last Name"/>
+            android:layout_height="match_parent"
+            android:background="#C7FCF2">
 
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:orientation="vertical"
-            android:id="@+id/layoutemial"
-            android:layout_below="@id/layoutfname">
-            <EditText
-                android:layout_margin="5dp"
+            <LinearLayout
+                android:id="@+id/relative_image"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:background="@color/white"
-                android:hint="Email"/>
-            <EditText
-                android:layout_marginTop="10dp"
+                android:layout_height="210dp" >
+                <ImageView
+                    android:src="@drawable/login"
+                    android:scaleType="fitXY"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </ImageView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutfname"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_margin="5dp"
-                android:background="@color/white"
-                android:hint="Password"/>
-            <EditText
-                android:layout_marginTop="10dp"
+                android:layout_below="@id/relative_image"
+                android:background="#C7FCF2"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/f_name"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="2dp"
+                    android:background="@color/white"
+                    android:hint="First Name"
+                    android:textAlignment="center" />
+
+                <EditText
+                    android:id="@+id/fL_name"
+                    android:layout_width="200dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:background="@color/white"
+                    android:hint="last Name"
+                    android:textAlignment="center" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutemial"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@id/layoutfname"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/username"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_margin="5dp"
+                    android:background="@color/white"
+                    android:hint="Username" />
+
+                <EditText
+                    android:id="@+id/pwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_margin="5dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:inputType="textPassword"
+                    android:hint="Password" />
+
+                <EditText
+                    android:id="@+id/cfrmPwd"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_margin="5dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:inputType="textPassword"
+                    android:hint="Confirm Password" />
+            </LinearLayout>
+
+            <RadioGroup
+                android:id="@+id/rbg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layoutemial"
+                android:layout_margin="5dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbmale"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="Male" />
+
+                <RadioButton
+                    android:id="@+id/rbFemale"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="Female" />
+
+                <RadioButton
+                    android:id="@+id/rbothers"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="others" />
+            </RadioGroup>
+
+            <androidx.appcompat.widget.AppCompatButton
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_margin="5dp"
-                android:background="@color/white"
-                android:hint="Confirm Password"/>
-        </LinearLayout>
-        <RadioGroup
-            android:id="@+id/rbg"
-            android:layout_width="match_parent"
-            android:layout_below="@id/layoutemial"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:orientation="horizontal">
-            <RadioButton android:id="@+id/rbmale"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="Male"
-                />
-            <RadioButton android:id="@+id/rbFemale"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="Female"
-                />
-            <RadioButton android:id="@+id/rbothers"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:text="others"
-                />
-        </RadioGroup>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_below="@id/rbg"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
-            android:background="#20B2AA"
-            android:text="Sign Up"
-            android:onClick="signupClicked"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
-    </RelativeLayout>
+                android:layout_below="@id/rbg"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="#20B2AA"
+                android:onClick="registerClicked"
+                android:text="Sign Up"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
