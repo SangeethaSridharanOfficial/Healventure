@@ -10,26 +10,22 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.healventureapp.R;
-import com.example.healventureapp.model.LoginModel;
-public class MainPageActivity extends AppCompatActivity {
+public class DoctorMainPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_page_activity);
-        Intent intent = getIntent();
-
-        if(intent.hasExtra("loginObj")){
-            LoginModel login = (LoginModel) intent.getSerializableExtra("loginObj");
-            Toast.makeText(this, "Welcome "+login.getEmail(), Toast.LENGTH_LONG).show();
-        }
+        setContentView(R.layout.doctor_main_page);
     }
-    @Override
+    public void onCLickUploadReport(View v){
+        Intent mainPage = new Intent(this, UploadReport.class);
+        mainPage.putExtra("testData","test");
+        startActivity(mainPage);
+    }
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
         return true;
     }
-    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             // action with ID action_refresh was selected
@@ -42,7 +38,7 @@ public class MainPageActivity extends AppCompatActivity {
                 break;
             // action with ID action_settings was selected
             case R.id.notification:
-                Intent mainPage1 = new Intent(this, NotificationPatients.class);
+                Intent mainPage1 = new Intent(this, NotificationDoctor.class);
                 mainPage1.putExtra("testData","test");
                 startActivity(mainPage1);
                 Toast.makeText(this, "Settings selected", Toast.LENGTH_SHORT)
@@ -53,37 +49,4 @@ public class MainPageActivity extends AppCompatActivity {
         }
         return true;
     }
-
-
-    public void onCLickBookApp(View v){
-        Intent mainPage = new Intent(this, BookAppointment.class);
-        mainPage.putExtra("testData","test");
-        startActivity(mainPage);
-    }
-
-    public void onCLickReport(View v){
-        Intent mainPage = new Intent(this, MyReport.class);
-        mainPage.putExtra("testData","test");
-        startActivity(mainPage);
-    }
-
-    public void onCLickFeedback(View v){
-        Intent mainPage = new Intent(this, Feedback.class);
-        mainPage.putExtra("testData","test");
-        startActivity(mainPage);
-    }
-
-    public void onCLickServices(View v){
-        Intent mainPage = new Intent(this, Services.class);
-        mainPage.putExtra("testData","test");
-        startActivity(mainPage);
-    }
-
-
-    public void onCLickAboutUs(View v){
-        Intent mainPage = new Intent(this, AboutUs.class);
-        mainPage.putExtra("testData","test");
-        startActivity(mainPage);
-    }
-
 }
