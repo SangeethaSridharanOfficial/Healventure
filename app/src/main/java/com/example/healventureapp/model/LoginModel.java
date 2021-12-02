@@ -4,6 +4,9 @@ public class LoginModel {
     private String email;
     private String password;
     private String role;
+    private String fname;
+    private String lname;
+    private String gender;
 
     public String getEmail() {
         return email;
@@ -29,12 +32,27 @@ public class LoginModel {
         this.role = role;
     }
 
-    @Override
-    public String toString() {
-        return "LoginModel{" +
-                "email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
-                '}';
+    public String getFname() {
+        return fname;
+    }
+
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
+    public String getLname() {
+        return lname;
+    }
+
+    public void setLname(String lname) {
+        this.lname = lname;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 }

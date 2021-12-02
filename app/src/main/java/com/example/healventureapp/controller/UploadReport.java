@@ -32,8 +32,9 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 public class UploadReport extends AppCompatActivity {
-    EditText selectPdf;
-    Button uploadBtn;
+    EditText selectPdf, patientName;
+    Button uploadBtn, chooseBtn;
+
 
     StorageReference storageRef;
     DatabaseReference databaseReference;
@@ -45,12 +46,14 @@ public class UploadReport extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.upload_report);
         selectPdf = findViewById(R.id.pdfName);
+        patientName = findViewById(R.id.patName);
         uploadBtn = findViewById(R.id.uploadBtn);
+        chooseBtn = findViewById(R.id.choosePdf);
         storageRef = FirebaseStorage.getInstance().getReference();
         databaseReference = FirebaseDatabase.getInstance().getReference();
         reportEndPoint = databaseReference.child("reports");
         uploadBtn.setEnabled(false);
-        selectPdf.setOnClickListener(new View.OnClickListener(){
+        chooseBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 selectPDF();
@@ -58,39 +61,33 @@ public class UploadReport extends AppCompatActivity {
         });
 
         activityResultLauncher = registerForActivityResult(
-
-                new ActivityResultContracts.StartActivityForResult(),
-                new ActivityResultCallback<ActivityResult>() {
-                    @Override
-                    public void onActivityResult(ActivityResult result) {
-                        if (result.getResultCode() == Activity.RESULT_OK) {
-                            uploadBtn.setEnabled(true);
-                            Intent data = result.getData();
-                            selectPdf.setText(data.getDataString().substring(data.getDataString().lastIndexOf("/")+1));
-                            uploadBtn.setOnClickListener(new View.OnClickListener(){
-                                @Override
-                                public void onClick(View v) {
-                                    System.out.println("Data " + data);
-                                    uploadPDFFileFirebase(data.getData());
-                                }
-                            });
-                        }
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        uploadBtn.setEnabled(true);
+                        Intent data = result.getData();
+                        selectPdf.setText(data.getDataString().substring(data.getDataString().lastIndexOf("/")+1));
+                        uploadBtn.setOnClickListener(new View.OnClickListener(){
+                            @Override
+                            public void onClick(View v) {
+                                uploadPDFFileFirebase(data.getData());
+                            }
+                        });
                     }
-                });
+                }
+            });
     }
 
     private void selectPDF() {
-        Intent pickFile = new Intent();
-        pickFile.setType("application/pdf");
-        pickFile.setAction(pickFile.ACTION_GET_CONTENT);
-        activityResultLauncher.launch(pickFile);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode ==RESULT_OK){
-
+        if(patientName.getText().toString().equals("")){
+            Toast.makeText(UploadReport.this, "Please enter the patient name", Toast.LENGTH_LONG).show();
+        }else{
+            Intent pickFile = new Intent();
+            pickFile.setType("application/pdf");
+            pickFile.setAction(pickFile.ACTION_GET_CONTENT);
+            activityResultLauncher.launch(pickFile);
         }
     }
 
@@ -110,6 +107,7 @@ public class UploadReport extends AppCompatActivity {
                 reportEndPoint.child(reportEndPoint.push().getKey()).setValue(pdf);
                 Toast.makeText(UploadReport.this, "File Uploaded", Toast.LENGTH_LONG).show();
                 progressDialog.dismiss();
+                uploadBtn.setEnabled(false);
             }
         }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
             @Override

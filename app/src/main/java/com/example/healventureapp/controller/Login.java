@@ -65,48 +65,46 @@ public class Login extends AppCompatActivity {
     }
     public void loginClicked(View view) {
         int selectedRole = roleGrp.getCheckedRadioButtonId();
-        System.out.println("Role id "+selectedRole);
-        if(!email.getText().toString().equals("") && !password.getText().toString().equals("") && email != null && password != null && selectedRole >= 0){
 
-            LoginModel login = new LoginModel();
-            login.setEmail(email.getText().toString());
-            login.setPassword(password.getText().toString());
+        if(!email.getText().toString().equals("") && !password.getText().toString().equals("") && email != null && password != null && selectedRole > 0){
             role = (RadioButton) findViewById(selectedRole);
-            login.setRole(role.getText().toString());
-            System.out.println("Login Details " + login.toString());
-            loginEndPoint.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DataSnapshot> task) {
-                    if(task.isSuccessful()){
-                        boolean isUserAvailable = false;
-                        Map<String,String> availableUser = null;
-                        for(DataSnapshot doc: task.getResult().getChildren()){
-                            Map<String,String> user=(HashMap<String, String>)doc.getValue();
-                            if(user.get("email").equals(email.getText().toString())){
-                                isUserAvailable = true;
-                                availableUser = (HashMap<String, String>)doc.getValue();
+            if(role.getText().toString().toLowerCase().equals("doctor")){
+                Intent docMainPage = new Intent(Login.this, MainPageActivity.class);
+                docMainPage.putExtra("username",role.getText().toString());
+                startActivity(docMainPage);
+            }else{
+                LoginModel login = new LoginModel();
+                login.setEmail(email.getText().toString());
+                login.setPassword(password.getText().toString());
+
+                login.setRole(role.getText().toString());
+                System.out.println("Login Details " + login.toString());
+                loginEndPoint.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+                        if(task.isSuccessful()){
+                            boolean isUserAvailable = false;
+                            Map<String,String> availableUser = null;
+                            for(DataSnapshot doc: task.getResult().getChildren()){
+                                Map<String,String> user=(HashMap<String, String>)doc.getValue();
+                                if(user.get("email").equals(email.getText().toString())){
+                                    isUserAvailable = true;
+                                    availableUser = (HashMap<String, String>)doc.getValue();
+                                }
                             }
-                        }
-                        if(isUserAvailable == false){
-                            Toast.makeText(Login.this,"Invalid User!! Please Register", Toast.LENGTH_LONG).show();
-                        }else{
-                            if(availableUser.get("role").toLowerCase() == "doctor"){
-                                Intent docMainPage = new Intent(Login.this, MainPageActivity.class);
-                                docMainPage.putExtra("username",login.getEmail());
-                                startActivity(docMainPage);
+                            if(isUserAvailable == false){
+                                Toast.makeText(Login.this,"Invalid User!! Please Register", Toast.LENGTH_LONG).show();
                             }else{
                                 Intent mainPage = new Intent(Login.this, MainPageActivity.class);
                                 mainPage.putExtra("username",login.getEmail());
                                 startActivity(mainPage);
                             }
-
+                        }else{
+                            Toast.makeText(Login.this,"There is no data", Toast.LENGTH_LONG).show();
                         }
-                    }else{
-                        Toast.makeText(Login.this,"There is no data", Toast.LENGTH_LONG).show();
                     }
-                }
-            });
-
+                });
+            }
         }else{
             Toast.makeText(Login.this,"Please enter username and password to proceed!!", Toast.LENGTH_LONG).show();
         }
