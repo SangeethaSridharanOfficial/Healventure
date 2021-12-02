@@ -61,13 +61,9 @@ public class BookAppointment extends AppCompatActivity {
         Intent user = getIntent();
         System.out.println("user"+ user.getStringExtra("username"));
         if (user.hasExtra("username")) {
-
             username = user.getStringExtra("username");
-
-
         } else {
             Intent mainPage = new Intent(this, Login.class);
-
             startActivity(mainPage);
         }
     }

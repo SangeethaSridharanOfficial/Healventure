@@ -33,6 +33,7 @@ public class Login extends AppCompatActivity {
     EditText email, password;
     RadioGroup roleGrp;
     RadioButton role;
+    LoginModel docLogin = new LoginModel();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,11 +48,10 @@ public class Login extends AppCompatActivity {
     }
 
     private void setDoctorLoginDetails(){
-        LoginModel docLogin = new LoginModel();
         docLogin.setRole("doctor");
         docLogin.setEmail("doctor");
         docLogin.setPassword("doctor123");
-        doctorLoginEndPoint.child(doctorLoginEndPoint.push().getKey()).setValue(docLogin).addOnFailureListener(new OnFailureListener() {
+        doctorLoginEndPoint.child(docLogin.getEmail()).setValue(docLogin).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(Login.this,"OOPS!! Something wrong. Try again!", Toast.LENGTH_LONG).show();
@@ -68,7 +68,9 @@ public class Login extends AppCompatActivity {
 
         if(!email.getText().toString().equals("") && !password.getText().toString().equals("") && email != null && password != null && selectedRole > 0){
             role = (RadioButton) findViewById(selectedRole);
-            if(role.getText().toString().toLowerCase().equals("doctor")){
+            if(role.getText().toString().toLowerCase().equals("doctor")
+                    && email.getText().toString().equals(docLogin.getEmail())
+                    && password.getText().toString().equals(docLogin.getPassword())){
                 Intent docMainPage = new Intent(Login.this, DoctorMainPage.class);
                 docMainPage.putExtra("username",role.getText().toString());
                 startActivity(docMainPage);

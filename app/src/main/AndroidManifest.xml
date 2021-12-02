@@ -24,6 +24,7 @@
         <activity android:name=".controller.Payment"></activity>
         <activity android:name=".controller.NotificationDoctor"></activity>
         <activity android:name=".controller.NotificationPatients"></activity>
+            <activity android:name=".controller.DoctorMainPage"></activity>
         <activity
             android:name=".controller.Login"
             android:exported="true">
