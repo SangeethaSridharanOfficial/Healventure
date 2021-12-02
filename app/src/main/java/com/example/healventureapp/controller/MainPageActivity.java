@@ -23,14 +23,33 @@ public class MainPageActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        return true;
+    }
+
     public void onCLickBookApp(View v){
         Intent mainPage = new Intent(this, BookAppointment.class);
         mainPage.putExtra("testData","test");
         startActivity(mainPage);
     }
 
+    public void onCLickReport(View v){
+        Intent mainPage = new Intent(this, Report.class);
+        mainPage.putExtra("testData","test");
+        startActivity(mainPage);
+    }
+
     public void onCLickFeedback(View v){
         Intent mainPage = new Intent(this, Feedback.class);
+        mainPage.putExtra("testData","test");
+        startActivity(mainPage);
+    }
+
+    public void onCLickServices(View v){
+        Intent mainPage = new Intent(this, Services.class);
         mainPage.putExtra("testData","test");
         startActivity(mainPage);
     }
