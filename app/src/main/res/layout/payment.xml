@@ -8,144 +8,151 @@
     tools:context=".controller.Payment">
 
 
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:id="@+id/card_info"-->
-<!--        android:layout_width="356dp"-->
-<!--        android:layout_height="51dp"-->
-<!--        android:layout_marginStart="27dp"-->
-<!--        android:layout_marginTop="50dp"-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/card_name"
+        android:layout_width="332dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/card_no"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/amount">
 
-<!--        android:layout_marginEnd="28dp"-->
-<!--        android:layout_marginBottom="10dp"-->
-<!--        android:background="#FFFFFF"-->
-<!--        app:layout_constraintBottom_toTopOf="@id/card_number"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.4">-->
+        <EditText
+            android:id="@+id/card_text"
+            android:layout_width="293dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="22dp"
+            android:layout_marginBottom="18dp"
+            android:hint="Enter Name on card"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--        <TextView-->
-<!--            android:id="@+id/card_info_text"-->
-<!--            android:layout_width="264dp"-->
-<!--            android:layout_height="35dp"-->
-<!--            android:layout_marginStart="12dp"-->
-<!--            android:layout_marginTop="9dp"-->
-<!--            android:layout_marginEnd="82dp"-->
-<!--            android:layout_marginBottom="7dp"-->
-<!--            android:text="Enter name on card"-->
-<!--            android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
-<!--            android:textSize="18sp"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/card_no"
+        android:layout_width="336dp"
+        android:layout_height="77dp"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/cvvexp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_name">
 
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:id="@+id/card_number"-->
-<!--        android:layout_width="356dp"-->
-<!--        android:layout_height="51dp"-->
-<!--        android:layout_marginStart="27dp"-->
-<!--        android:layout_marginEnd="28dp"-->
-<!--        android:layout_marginBottom="10dp"-->
-<!--        android:background="#FFFFFF"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/card_cvv"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/card_info">-->
+        <EditText
+            android:id="@+id/card_no_txt"
+            android:layout_width="291dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="22dp"
+            android:layout_marginBottom="14dp"
+            android:hint="Enter card number"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--        <TextView-->
-<!--            android:id="@+id/card_number_text"-->
-<!--            android:layout_width="264dp"-->
-<!--            android:layout_height="35dp"-->
-<!--            android:layout_marginStart="15dp"-->
-<!--            android:layout_marginTop="9dp"-->
-<!--            android:layout_marginEnd="76dp"-->
-<!--            android:layout_marginBottom="7dp"-->
-<!--            android:text="Enter card number"-->
-<!--            android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
-<!--            android:textSize="18sp"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cvvexp"
+        android:layout_width="334dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/paynow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_no">
 
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:id="@+id/card_expiry"-->
-<!--        android:layout_width="252dp"-->
-<!--        android:layout_height="49dp"-->
-<!--        android:layout_marginStart="29dp"-->
-<!--        android:layout_marginEnd="10dp"-->
-<!--        android:layout_marginBottom="480dp"-->
-<!--        android:background="#FFFFFF"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toStartOf="@id/card_cvv"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/card_number"-->
-<!--        app:layout_constraintVertical_bias="0.75">-->
+        <EditText
+            android:id="@+id/exp"
+            android:layout_width="146dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="21dp"
+            android:layout_marginEnd="19dp"
+            android:layout_marginBottom="9dp"
+            android:hint="Expiry date"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/cvv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/card_expiry_txt"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_marginStart="12dp"-->
-<!--            android:layout_marginTop="6dp"-->
-<!--            android:layout_marginEnd="47dp"-->
-<!--            android:layout_marginBottom="6dp"-->
-<!--            android:text="Enter expiry date"-->
-<!--            android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
-<!--            android:textSize="18sp"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintHorizontal_bias="1.0"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintVertical_bias="0.0" />-->
+        <EditText
+            android:id="@+id/cvv"
+            android:layout_width="118dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="21dp"
+            android:layout_marginBottom="10dp"
+            android:hint="Enter CVV"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/exp"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+    <Button
+        android:id="@+id/paynow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="162dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="148dp"
+        android:layout_marginBottom="190dp"
+        android:text="PAY NOW"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cvvexp" />
 
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:id="@+id/card_cvv"-->
-<!--        android:layout_width="92dp"-->
-<!--        android:layout_height="48dp"-->
-<!--        android:layout_marginEnd="28dp"-->
-<!--        android:layout_marginBottom="480dp"-->
-<!--        android:background="#FFFFFF"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf=""-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/card_number">-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/amount"
+        android:layout_width="342dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/card_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-<!--        <TextView-->
-<!--            android:id="@+id/card_cvv_txt"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_marginStart="8dp"-->
-<!--            android:layout_marginTop="6dp"-->
-<!--            android:layout_marginEnd="47dp"-->
-<!--            android:layout_marginBottom="6dp"-->
-<!--            android:text="CVV"-->
-<!--            android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
-<!--            android:textSize="18sp"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-<!--    <Button-->
-<!--        android:id="@+id/paynow"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginBottom="300dp"-->
-<!--        android:text="Pay Now"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/card_expiry" />-->
-
+        <EditText
+            android:id="@+id/amount_text"
+            android:layout_width="294dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="27dp"
+            android:layout_marginBottom="12dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:hint="Enter Amount"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

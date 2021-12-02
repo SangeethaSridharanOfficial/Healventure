@@ -21,6 +21,7 @@
         <activity android:name=".controller.Signup"></activity>
         <activity android:name=".controller.MyReport"></activity>
         <activity android:name=".controller.UploadReport"></activity>
+        <activity android:name=".controller.Payment"></activity>
         <activity
             android:name=".controller.Login"
             android:exported="true">

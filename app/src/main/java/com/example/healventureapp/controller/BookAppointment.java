@@ -74,7 +74,9 @@ public class BookAppointment extends AppCompatActivity {
 
             }
         });
-
+        Intent mainPage = new Intent(this, Payment.class);
+        mainPage.putExtra("testData","test");
+        startActivity(mainPage);
     }
     final Calendar myCalendar = Calendar.getInstance();
     DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
