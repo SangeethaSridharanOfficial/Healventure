@@ -1,4 +1,4 @@
-package com.example.healventureapp.view;
+package com.example.healventureapp.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,17 +13,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.healventureapp.R;
 import com.example.healventureapp.model.LoginModel;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.UUID;
 
 public class Login extends AppCompatActivity {
     private DatabaseReference healventureDatabase;

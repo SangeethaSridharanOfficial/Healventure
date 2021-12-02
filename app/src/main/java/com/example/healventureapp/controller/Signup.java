@@ -1,4 +1,4 @@
-package com.example.healventureapp.view;
+package com.example.healventureapp.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,13 +8,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.healventureapp.R;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 
 public class Signup extends AppCompatActivity {
     EditText fname, lname, uname, pwd, cfrmPwd;

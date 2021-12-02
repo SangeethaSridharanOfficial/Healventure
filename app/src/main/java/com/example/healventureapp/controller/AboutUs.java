@@ -1,11 +1,6 @@
-package com.example.healventureapp.view;
+package com.example.healventureapp.controller;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 

@@ -1,4 +1,4 @@
-package com.example.healventureapp.view;
+package com.example.healventureapp.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 

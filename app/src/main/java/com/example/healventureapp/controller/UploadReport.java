@@ -1,6 +1,4 @@
-package com.example.healventureapp.view;
-
-import android.app.Activity;
+package com.example.healventureapp.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 

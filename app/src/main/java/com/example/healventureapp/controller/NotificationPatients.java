@@ -1,4 +1,4 @@
-package com.example.healventureapp.view;
+package com.example.healventureapp.controller;
 
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -14,14 +14,14 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.healventureapp.R;
 
-public class NotificationDoctor extends AppCompatActivity {
-    ConstraintLayout doctorHolder;
+public class NotificationPatients extends AppCompatActivity {
+    ConstraintLayout patientHolder;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.doctor_notification);
-        doctorHolder = findViewById(R.id.doctorHolder);
-        String[] textArray = {"test this is doctor notification", "Two", "Three", "Four"};
+        setContentView(R.layout.paitient_notification);
+        patientHolder = findViewById(R.id.patientHolder);
+        String[] textArray = {"your appointment has been booked for", "Reminder! your appointment is on", "your appointment has been booked for", "your appointment was cancelled on "};
         LinearLayout topLayer = new LinearLayout(this);
         topLayer.setOrientation(LinearLayout.VERTICAL);
         for( int i = 0; i < textArray.length; i++ )
@@ -44,7 +44,7 @@ public class NotificationDoctor extends AppCompatActivity {
 
 
             TextView textView = new TextView(this);
-            textView.setText(textArray[i] + "time");
+            textView.setText(textArray[i] + " time" + ", date");
 
             textView.setGravity(Gravity.CENTER);
             textView.setLayoutParams(new FrameLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT));
@@ -53,10 +53,9 @@ public class NotificationDoctor extends AppCompatActivity {
             reportLinearLayout.addView(textView);
             topLayer.addView(reportLinearLayout);
         }
-        doctorHolder.addView(topLayer);
+        patientHolder.addView(topLayer);
 
     }
 
 
 }
-

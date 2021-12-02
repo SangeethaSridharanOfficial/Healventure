@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#C7FCF2"
-    tools:context=".view.BookAppointment"
+    tools:context=".controller.BookAppointment"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <TextView
         android:id="@+id/text_app"

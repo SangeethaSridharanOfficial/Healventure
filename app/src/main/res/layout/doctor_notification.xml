@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ADF3DE"
-    tools:context=".view.NotificationDoctor">
+    tools:context=".controller.NotificationDoctor">
     <!--    for testing -->
 
 <!--    <TextView-->
