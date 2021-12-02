@@ -36,40 +36,38 @@ public class Login extends AppCompatActivity {
     }
 
     public void loginClicked(View view) {
-        Intent reportPage = new Intent(this, BookAppointment.class);
-        startActivity(reportPage);
-//        if(!email.getText().toString().equals("") && !password.getText().toString().equals("") && email != null && password != null){
-//            Intent mainPage = new Intent(this, MainPageActivity.class);
-//            LoginModel login = new LoginModel();
-//            login.setEmail(email.getText().toString());
-//            login.setPassword(password.getText().toString());
-//            mainPage.putExtra("loginObj",login);
-//            loginEndPoint.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-//                @Override
-//                public void onComplete(@NonNull Task<DataSnapshot> task) {
-//                    if(task.isSuccessful()){
-//                        boolean isUserAvailable = false;
-//                        for(DataSnapshot doc: task.getResult().getChildren()){
-//                            Map<String,String> user=(HashMap<String, String>)doc.getValue();
-//                            if(user.get("email").equals(email.getText().toString())){
-//                                isUserAvailable = true;
-//                            }
-//                        }
-//                        if(isUserAvailable == false){
-//                            Toast.makeText(Login.this,"Invalid User!! Please Register", Toast.LENGTH_LONG).show();
-//                        }else{
-//
-//                            startActivity(mainPage);
-//                        }
-//                    }else{
-//                        Toast.makeText(Login.this,"There is no data", Toast.LENGTH_LONG).show();
-//                    }
-//                }
-//            });
-//
-//        }else{
-//            Toast.makeText(Login.this,"Please enter username and password to proceed!!", Toast.LENGTH_LONG).show();
-//        }
+        if(!email.getText().toString().equals("") && !password.getText().toString().equals("") && email != null && password != null){
+            Intent mainPage = new Intent(this, MainPageActivity.class);
+            LoginModel login = new LoginModel();
+            login.setEmail(email.getText().toString());
+            login.setPassword(password.getText().toString());
+            mainPage.putExtra("loginObj",login);
+            loginEndPoint.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                    if(task.isSuccessful()){
+                        boolean isUserAvailable = false;
+                        for(DataSnapshot doc: task.getResult().getChildren()){
+                            Map<String,String> user=(HashMap<String, String>)doc.getValue();
+                            if(user.get("email").equals(email.getText().toString())){
+                                isUserAvailable = true;
+                            }
+                        }
+                        if(isUserAvailable == false){
+                            Toast.makeText(Login.this,"Invalid User!! Please Register", Toast.LENGTH_LONG).show();
+                        }else{
+
+                            startActivity(mainPage);
+                        }
+                    }else{
+                        Toast.makeText(Login.this,"There is no data", Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+
+        }else{
+            Toast.makeText(Login.this,"Please enter username and password to proceed!!", Toast.LENGTH_LONG).show();
+        }
     }
 
 
