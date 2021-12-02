@@ -3,16 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidProjectWithDatabase/Healventure/app/src/main/res/layout/about_us.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjectWithDatabase/Healventure/app/src/main/res/layout/app_bar.xml" value="0.15989583333333332" />
+        <entry key="..\:/AndroidProjectWithDatabase/Healventure/app/src/main/res/layout/appbar_activity.xml" value="0.1" />
+        <entry key="..\:/AndroidProjectWithDatabase/Healventure/app/src/main/res/layout/book_appointment_activity.xml" value="0.1" />
+        <entry key="..\:/AndroidProjectWithDatabase/Healventure/app/src/main/res/layout/doctor_main_page.xml" value="0.15989583333333332" />
+        <entry key="..\:/AndroidProjectWithDatabase/Healventure/app/src/main/res/layout/feedback.xml" value="0.15989583333333332" />
+        <entry key="..\:/AndroidProjectWithDatabase/Healventure/app/src/main/res/layout/main_page_activity.xml" value="0.1" />
+        <entry key="..\:/AndroidProjectWithDatabase/Healventure/app/src/main/res/layout/payment.xml" value="0.20052083333333334" />
+        <entry key="..\:/AndroidProjectWithDatabase/Healventure/app/src/main/res/menu/toolbar_menu.xml" value="0.20052083333333334" />
         <entry key="..\:/Users/dell/Desktop/3rdSem/Android/HealventureApp/app/src/main/res/layout/activity_main.xml" value="0.165625" />
         <entry key="..\:/Users/dell/Desktop/3rdSem/Android/HealventureApp/app/src/main/res/layout/login.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/dell/Desktop/3rdSem/Android/HealventureApp/app/src/main/res/layout/signup.xml" value="0.12421875" />
-        <entry key="..\:/Users/jo/Desktop/Healventure/Healventure/app/src/main/res/layout/about_us.xml" value="0.10144927536231885" />
-        <entry key="..\:/Users/jo/Desktop/Healventure/Healventure/app/src/main/res/layout/book_appointment_activity.xml" value="0.1" />
-        <entry key="..\:/Users/jo/Desktop/Healventure/Healventure/app/src/main/res/layout/feedback.xml" value="0.1" />
-        <entry key="..\:/Users/jo/Desktop/Healventure/Healventure/app/src/main/res/layout/payment.xml" value="0.3333333333333333" />
-        <entry key="..\:/Users/jo/Desktop/Healventure/Healventure/app/src/main/res/layout/services.xml" value="0.1" />
-        <entry key="..\:/Users/jo/Desktop/Healventure/Healventure/app/src/main/res/layout/services_activity.xml" value="0.10144927536231885" />
-        <entry key="..\:/Users/jo/Desktop/Healventure/Healventure/app/src/main/res/layout/tryla.xml" value="0.10625" />
         <entry key="..\:/Users/nayan/OneDrive/Documents/Project/Healventure/app/src/main/res/layout/activity_main.xml" value="0.259375" />
         <entry key="..\:/Users/nayan/OneDrive/Documents/Project/Healventure/app/src/main/res/layout/login.xml" value="0.259375" />
         <entry key="..\:/Users/nayan/OneDrive/Documents/Project/Healventure/app/src/main/res/layout/signup.xml" value="0.259375" />

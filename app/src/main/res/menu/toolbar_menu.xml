@@ -2,16 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/search_bar"
+        android:id="@+id/profile"
         android:title="Search"
         app:showAsAction="ifRoom"
+
         android:icon="@drawable/ic_profile"
        />
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/notification"
         android:orderInCategory="100"
         android:icon="@drawable/ic_notification"
         android:title="@string/action_settings"
+
         app:showAsAction="ifRoom" />
 
 </menu>

@@ -34,9 +34,7 @@ public class Login extends AppCompatActivity {
         email = findViewById(R.id.username);
         password = findViewById(R.id.password);
     }
-
     public void loginClicked(View view) {
-
         Intent mainPage = new Intent(this, UploadReport.class);
         startActivity(mainPage);
 //        if(!email.getText().toString().equals("") && !password.getText().toString().equals("") && email != null && password != null){
@@ -72,14 +70,11 @@ public class Login extends AppCompatActivity {
 //            Toast.makeText(Login.this,"Please enter username and password to proceed!!", Toast.LENGTH_LONG).show();
 //        }
     }
-
-
     public void onCLickForgotPassword(View view) {
         Intent login = new Intent(this, ForgotPassword.class);
         login.putExtra("testData", "test");
         startActivity(login);
     }
-
     public void signupClicked(View view){
         Intent signupPage = new Intent(this, Signup.class);
         signupPage.putExtra("email",email.getText().toString());
