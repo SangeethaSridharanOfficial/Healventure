@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#C7FCF2"
-    tools:context=".view.MainPageActivity"
+    tools:context=".controller.MainPageActivity"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
         <ImageView

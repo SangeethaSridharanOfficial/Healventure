@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#04D5C1"
-    tools:context=".view.Login">
+    tools:context=".controller.Login">
 <!--    for testing -->
 
     <TextView

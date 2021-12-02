@@ -3,6 +3,8 @@
     package="com.example.healventureapp">
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,16 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HealventureApp">
-
-        <activity android:name=".view.MainPageActivity"></activity>
-        <activity android:name=".view.BookAppointment"></activity>
-        <activity android:name=".view.Feedback"></activity>
-        <activity android:name=".view.AboutUs"></activity>
-        <activity android:name=".view.ForgotPassword"></activity>
-        <activity android:name=".view.Signup"></activity>
-        <activity android:name=".view.MyReport"></activity>
+        <activity android:name=".controller.MainPageActivity"></activity>
+        <activity android:name=".controller.BookAppointment"></activity>
+        <activity android:name=".controller.Feedback"></activity>
+        <activity android:name=".controller.AboutUs"></activity>
+        <activity android:name=".controller.ForgotPassword"></activity>
+        <activity android:name=".controller.Signup"></activity>
+        <activity android:name=".controller.MyReport"></activity>
+        <activity android:name=".controller.UploadReport"></activity>
         <activity
-            android:name=".view.NotificationDoctor"
+            android:name=".controller.Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

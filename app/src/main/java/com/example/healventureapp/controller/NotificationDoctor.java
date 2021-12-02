@@ -1,13 +1,11 @@
-package com.example.healventureapp.view;
+package com.example.healventureapp.controller;
 
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -16,14 +14,14 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.healventureapp.R;
 
-public class MyReport extends AppCompatActivity {
-    ConstraintLayout reportsHolder;
+public class NotificationDoctor extends AppCompatActivity {
+    ConstraintLayout doctorHolder;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.myreports);
-        reportsHolder = findViewById(R.id.reportsHolder);
-        String[] textArray = {"One", "Two", "Three", "Four"};
+        setContentView(R.layout.doctor_notification);
+        doctorHolder = findViewById(R.id.doctorHolder);
+        String[] textArray = {"test this is doctor notification", "Two", "Three", "Four"};
         LinearLayout topLayer = new LinearLayout(this);
         topLayer.setOrientation(LinearLayout.VERTICAL);
         for( int i = 0; i < textArray.length; i++ )
@@ -39,7 +37,7 @@ public class MyReport extends AppCompatActivity {
             pdfIcon.setLayoutParams(params);
 
 
-            String uri = "@drawable/pdf";  // where myresource (without the extension) is the file
+            String uri = "@drawable/info";  // where myresource (without the extension) is the file
             int imageResource = getResources().getIdentifier(uri, null, getPackageName());
             Drawable res = getResources().getDrawable(imageResource);
             pdfIcon.setImageDrawable(res);
@@ -55,9 +53,10 @@ public class MyReport extends AppCompatActivity {
             reportLinearLayout.addView(textView);
             topLayer.addView(reportLinearLayout);
         }
-        reportsHolder.addView(topLayer);
+        doctorHolder.addView(topLayer);
 
     }
 
 
 }
+

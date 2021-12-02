@@ -1,4 +1,4 @@
-package com.example.healventureapp.view;
+package com.example.healventureapp.controller;
 
 import android.content.Context;
 import android.content.Intent;

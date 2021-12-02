@@ -5,71 +5,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ADF3DE"
-    tools:context=".view.UploadReport">
-    <!--    for testing -->
+    tools:context=".controller.UploadReport">
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/pt_name"
-        android:layout_width="356dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="92dp"
-        android:layout_marginBottom="588dp"
-        android:background="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="27dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="271dp"
-            android:layout_marginBottom="16dp"
-            android:text="Patient Name"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ProgressBar
-        android:id="@+id/progressBar2"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="164dp"
-        android:layout_height="102dp"
-        android:layout_marginStart="123dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="124dp"
-        android:layout_marginBottom="304dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <EditText
+        android:id="@+id/patName"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="Patient name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/pdfName"
+        ></EditText>
+
+    <EditText
+        android:id="@+id/pdfName"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="Click to select file"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/uploadBtn"
+        app:layout_constraintTop_toBottomOf="@+id/patName"></EditText>
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:id="@+id/uploadBtn"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="129dp"
-        android:layout_marginTop="46dp"
-        android:layout_marginEnd="124dp"
-        android:layout_marginBottom="87dp"
-        android:text="Upload Report"
-        app:layout_constraintBottom_toTopOf="@+id/progressBar2"
+        android:text="Upload"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pt_name" />
-
+        app:layout_constraintTop_toBottomOf="@+id/pdfName"></Button>
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
