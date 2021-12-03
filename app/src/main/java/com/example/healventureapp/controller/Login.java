@@ -74,13 +74,11 @@ public class Login extends AppCompatActivity {
                 Intent docMainPage = new Intent(Login.this, DoctorMainPage.class);
                 docMainPage.putExtra("username",role.getText().toString());
                 startActivity(docMainPage);
-            }else{
+            }else if(!role.getText().toString().toLowerCase().equals("doctor")){
                 LoginModel login = new LoginModel();
                 login.setEmail(email.getText().toString());
                 login.setPassword(password.getText().toString());
-
                 login.setRole(role.getText().toString());
-                System.out.println("Login Details " + login.toString());
                 loginEndPoint.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DataSnapshot> task) {
@@ -89,7 +87,8 @@ public class Login extends AppCompatActivity {
                             Map<String,String> availableUser = null;
                             for(DataSnapshot doc: task.getResult().getChildren()){
                                 Map<String,String> user=(HashMap<String, String>)doc.getValue();
-                                if(user.get("email").equals(email.getText().toString())){
+                                if(user.get("email").equals(email.getText().toString())
+                                        && user.get("password").equals(password.getText().toString())){
                                     isUserAvailable = true;
                                     availableUser = (HashMap<String, String>)doc.getValue();
                                 }
@@ -106,6 +105,8 @@ public class Login extends AppCompatActivity {
                         }
                     }
                 });
+            }else{
+                Toast.makeText(Login.this,"Invalid User!! Please Register", Toast.LENGTH_LONG).show();
             }
         }else{
             Toast.makeText(Login.this,"Please enter username and password to proceed!!", Toast.LENGTH_LONG).show();
@@ -113,7 +114,7 @@ public class Login extends AppCompatActivity {
     }
     public void onCLickForgotPassword(View view) {
         Intent login = new Intent(this, ForgotPassword.class);
-        login.putExtra("testData", "test");
+        login.putExtra("username", email.getText().toString());
         startActivity(login);
     }
     public void signupClicked(View view){

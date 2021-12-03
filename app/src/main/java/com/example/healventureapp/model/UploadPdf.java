@@ -3,14 +3,16 @@ package com.example.healventureapp.model;
 public class UploadPdf {
     private String name;
     private String url;
+    private String username;
 
     public UploadPdf(){
 
     }
 
-    public UploadPdf(String name, String url){
+    public UploadPdf(String name, String url, String username){
         this.name = name;
         this.url = url;
+        this.username = username;
     }
 
     public String getName() {
@@ -27,5 +29,13 @@ public class UploadPdf {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

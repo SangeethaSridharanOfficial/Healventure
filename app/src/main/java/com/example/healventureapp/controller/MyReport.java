@@ -36,6 +36,7 @@ public class MyReport extends AppCompatActivity {
     ConstraintLayout reportsHolder;
     private DatabaseReference healventureDatabase;
     private DatabaseReference reportEndPoint;
+    String username;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +44,13 @@ public class MyReport extends AppCompatActivity {
         healventureDatabase = FirebaseDatabase.getInstance().getReference();
         reportEndPoint = healventureDatabase.child("reports");
         reportsHolder = findViewById(R.id.reportsHolder);
+        Intent user = getIntent();
+        if (user.hasExtra("username")) {
+            username = user.getStringExtra("username");
+        } else {
+            Intent mainPage = new Intent(this, Login.class);
+            startActivity(mainPage);
+        }
         renderReports();
     }
 
@@ -55,48 +63,50 @@ public class MyReport extends AppCompatActivity {
                     topLayer.setOrientation(LinearLayout.VERTICAL);
                     for(DataSnapshot doc: task.getResult().getChildren()){
                         Map<String,String> reports=(HashMap<String, String>)doc.getValue();
-                        LinearLayout reportLinearLayout = new LinearLayout(MyReport.this);
-                        reportLinearLayout.setOrientation(LinearLayout.HORIZONTAL);
-                        ImageView pdfIcon = new ImageView(MyReport.this);
+                        if(reports.get("username").equals(username)){
+                            LinearLayout reportLinearLayout = new LinearLayout(MyReport.this);
+                            reportLinearLayout.setOrientation(LinearLayout.HORIZONTAL);
+                            ImageView pdfIcon = new ImageView(MyReport.this);
 
-                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(150, 150);
+                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(150, 150);
 
-                        // setting the margin in linearlayout
-                        params.setMargins(10, 20, 10, 20);
-                        pdfIcon.setLayoutParams(params);
-
-
-                        String uri = "@drawable/pdf";  // where myresource (without the extension) is the file
-                        int imageResource = getResources().getIdentifier(uri, null, getPackageName());
-                        Drawable res = getResources().getDrawable(imageResource);
-                        pdfIcon.setImageDrawable(res);
+                            // setting the margin in linearlayout
+                            params.setMargins(10, 20, 10, 20);
+                            pdfIcon.setLayoutParams(params);
 
 
-                        TextView textView = new TextView(MyReport.this);
-                        textView.setText(reports.get("name") + "time");
-                        textView.setWidth(1300);
-                        textView.setGravity(Gravity.CENTER_VERTICAL);
-                        textView.setLayoutParams(new FrameLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT));
-                        textView.setTextSize(22);
-                        reportLinearLayout.addView(pdfIcon);
-                        reportLinearLayout.addView(textView);
-                        GradientDrawable border = new GradientDrawable();
-                        border.setStroke(1, 0xFF000000); //black border with full opacity
-                        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
-                            reportLinearLayout.setBackgroundDrawable(border);
-                        } else {
-                            reportLinearLayout.setBackground(border);
-                        }
-                        reportLinearLayout.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Intent pdfView = new Intent(Intent.ACTION_VIEW);
-                                pdfView.setType("application/pdf");
-                                pdfView.setData(Uri.parse(reports.get("url")));
-                                startActivity(pdfView);
+                            String uri = "@drawable/pdf";  // where myresource (without the extension) is the file
+                            int imageResource = getResources().getIdentifier(uri, null, getPackageName());
+                            Drawable res = getResources().getDrawable(imageResource);
+                            pdfIcon.setImageDrawable(res);
+
+
+                            TextView textView = new TextView(MyReport.this);
+                            textView.setText(reports.get("name"));
+                            textView.setWidth(1300);
+                            textView.setGravity(Gravity.CENTER_VERTICAL);
+                            textView.setLayoutParams(new FrameLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT));
+                            textView.setTextSize(22);
+                            reportLinearLayout.addView(pdfIcon);
+                            reportLinearLayout.addView(textView);
+                            GradientDrawable border = new GradientDrawable();
+                            border.setStroke(1, 0xFF000000); //black border with full opacity
+                            if(Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+                                reportLinearLayout.setBackgroundDrawable(border);
+                            } else {
+                                reportLinearLayout.setBackground(border);
                             }
-                        });
-                        topLayer.addView(reportLinearLayout);
+                            reportLinearLayout.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent pdfView = new Intent(Intent.ACTION_VIEW);
+                                    pdfView.setType("application/pdf");
+                                    pdfView.setData(Uri.parse(reports.get("url")));
+                                    startActivity(pdfView);
+                                }
+                            });
+                            topLayer.addView(reportLinearLayout);
+                        }
                     }
                     reportsHolder.addView(topLayer);
                 }else{

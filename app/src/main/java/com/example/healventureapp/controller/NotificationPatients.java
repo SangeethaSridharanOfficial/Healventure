@@ -2,6 +2,8 @@ package com.example.healventureapp.controller;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.Menu;
@@ -13,54 +15,97 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.example.healventureapp.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class NotificationPatients extends AppCompatActivity {
     ConstraintLayout patientHolder;
+    private DatabaseReference healventureDatabase;
+    private DatabaseReference bookAppointEndPoint;
+    String username = "";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.paitient_notification);
-        patientHolder = findViewById(R.id.patientHolder);
-        String[] textArray = {"your appointment has been booked for", "Reminder! your appointment is on", "your appointment has been booked for", "your appointment was cancelled on "};
-        LinearLayout topLayer = new LinearLayout(this);
-        topLayer.setOrientation(LinearLayout.VERTICAL);
-        for( int i = 0; i < textArray.length; i++ )
-        {
-            LinearLayout reportLinearLayout = new LinearLayout(this);
-            reportLinearLayout.setOrientation(LinearLayout.HORIZONTAL);
-            ImageView pdfIcon = new ImageView(this);
-
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(150, 150);
-
-            // setting the margin in linearlayout
-            params.setMargins(10, 20, 10, 20);
-            pdfIcon.setLayoutParams(params);
-
-
-            String uri = "@drawable/info";  // where myresource (without the extension) is the file
-            int imageResource = getResources().getIdentifier(uri, null, getPackageName());
-            Drawable res = getResources().getDrawable(imageResource);
-            pdfIcon.setImageDrawable(res);
-
-
-            TextView textView = new TextView(this);
-            textView.setText(textArray[i] + " time" + ", date");
-
-            textView.setGravity(Gravity.CENTER);
-            textView.setLayoutParams(new FrameLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT));
-            textView.setTextSize(22);
-            reportLinearLayout.addView(pdfIcon);
-            reportLinearLayout.addView(textView);
-            topLayer.addView(reportLinearLayout);
+        Intent user = getIntent();
+        if (user.hasExtra("username")) {
+            username = user.getStringExtra("username");
+        } else {
+            Intent mainPage = new Intent(this, Login.class);
+            startActivity(mainPage);
         }
-        patientHolder.addView(topLayer);
+        healventureDatabase = FirebaseDatabase.getInstance().getReference();
+        bookAppointEndPoint = healventureDatabase.child("bookAppointment");
+        patientHolder = findViewById(R.id.patientHolder);
+        renderNotif();
 
     }
+
+    private void renderNotif() {
+        bookAppointEndPoint.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if(task.isSuccessful()){
+                    LinearLayout topLayer = new LinearLayout(NotificationPatients.this);
+                    topLayer.setOrientation(LinearLayout.VERTICAL);
+                    for(DataSnapshot doc: task.getResult().getChildren()){
+                        Map<String,String> reports=(HashMap<String, String>)doc.getValue();
+                        if(reports.get("userName").equals(username)){
+                            LinearLayout reportLinearLayout = new LinearLayout(NotificationPatients.this);
+                            reportLinearLayout.setOrientation(LinearLayout.HORIZONTAL);
+                            ImageView pdfIcon = new ImageView(NotificationPatients.this);
+
+                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(150, 150);
+
+                            // setting the margin in linearlayout
+                            params.setMargins(10, 20, 10, 40);
+                            pdfIcon.setLayoutParams(params);
+
+
+                            String uri = "@drawable/info";  // where myresource (without the extension) is the file
+                            int imageResource = getResources().getIdentifier(uri, null, getPackageName());
+                            Drawable res = getResources().getDrawable(imageResource);
+                            pdfIcon.setImageDrawable(res);
+
+
+                            TextView textView = new TextView(NotificationPatients.this);
+                            textView.setText("You have booked an appointment on " + reports.get("date") + " at " + reports.get("time"));
+
+                            textView.setGravity(Gravity.CENTER_VERTICAL);
+                            textView.setLayoutParams(new FrameLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT));
+                            textView.setTextSize(16);
+                            GradientDrawable border = new GradientDrawable();
+                            border.setStroke(1, 0xFF000000); //black border with full opacity
+                            if(Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+                                reportLinearLayout.setBackgroundDrawable(border);
+                            } else {
+                                reportLinearLayout.setBackground(border);
+                            }
+                            reportLinearLayout.addView(pdfIcon);
+                            reportLinearLayout.addView(textView);
+                            topLayer.addView(reportLinearLayout);
+                        }
+                    }
+                    patientHolder.addView(topLayer);
+                }else{
+                    Toast.makeText(NotificationPatients.this,"There is no data", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);

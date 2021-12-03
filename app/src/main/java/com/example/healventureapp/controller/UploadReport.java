@@ -103,7 +103,7 @@ public class UploadReport extends AppCompatActivity {
                 Task<Uri> urlTask = taskSnapshot.getStorage().getDownloadUrl();
                 while(!urlTask.isComplete());
                 Uri uri = urlTask.getResult();
-                UploadPdf pdf = new UploadPdf(selectPdf.getText().toString(), uri.toString());
+                UploadPdf pdf = new UploadPdf(selectPdf.getText().toString(), uri.toString(), patientName.getText().toString());
                 reportEndPoint.child(reportEndPoint.push().getKey()).setValue(pdf);
                 Toast.makeText(UploadReport.this, "File Uploaded", Toast.LENGTH_LONG).show();
                 progressDialog.dismiss();

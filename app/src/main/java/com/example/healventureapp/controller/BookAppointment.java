@@ -81,12 +81,12 @@ public class BookAppointment extends AppCompatActivity {
         }).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-
+                Intent mainPage = new Intent(BookAppointment.this, Payment.class);
+                mainPage.putExtra("testData", "test");
+                startActivity(mainPage);
             }
         });
-        Intent mainPage = new Intent(this, Payment.class);
-        mainPage.putExtra("testData", "test");
-        startActivity(mainPage);
+
     }
 
     final Calendar myCalendar = Calendar.getInstance();
