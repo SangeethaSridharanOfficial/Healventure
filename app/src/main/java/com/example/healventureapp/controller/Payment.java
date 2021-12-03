@@ -2,9 +2,14 @@ package com.example.healventureapp.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+
+import android.widget.EditText;
+
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,11 +18,40 @@ import com.example.healventureapp.R;
 import com.google.firebase.database.annotations.Nullable;
 
 public class Payment extends AppCompatActivity {
+
+    EditText amount, nameOnCard,cardNumber, expiry, cvv;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.payment);
         this.setTitle("Payment");
+        amount = findViewById(R.id.amount_text);
+        nameOnCard = findViewById(R.id.card_text);
+        cardNumber = findViewById(R.id.card_no_txt);
+        expiry = findViewById(R.id.exp);
+        cvv = findViewById(R.id.cvv);
+
+
+    }
+    public void payNowClicked(View view) {
+        if(!amount.getText().toString().equals("") && !nameOnCard.getText().toString().equals("")
+                && !cardNumber.getText().toString().equals("") && !expiry.getText().toString().equals("")
+                && !cvv.getText().toString().equals("") && amount != null && nameOnCard != null && cardNumber != null
+        && expiry != null && cvv != null){
+            if (cardNumber.getText().toString().length() != 16 ){
+                Toast.makeText(Payment.this,"Invalid input!!Please enter the correct card number.", Toast.LENGTH_LONG).show();
+            }
+            else if(cvv.getText().toString().length() != 3){
+                Toast.makeText(Payment.this,"Invalid input!!Please enter the correct cvv.", Toast.LENGTH_LONG).show();
+            }else{
+                Intent pay = new Intent(this, MainPageActivity.class);
+                startActivity(pay);
+            }
+        }else {
+
+            Toast.makeText(Payment.this, "Please enter all details to proceed!!", Toast.LENGTH_LONG).show();
+        }
     }
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
