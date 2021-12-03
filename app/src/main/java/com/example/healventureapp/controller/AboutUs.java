@@ -17,6 +17,10 @@ public class AboutUs extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_us);
         this.setTitle("About Us");
+        Intent user = getIntent();
+              if (user.hasExtra("username")) {
+            String username = user.getStringExtra("username");
+        }
     }
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

@@ -13,7 +13,7 @@ import com.example.healventureapp.R;
 
 public class Feedback extends AppCompatActivity {
 
-
+    String username="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +25,10 @@ public class Feedback extends AppCompatActivity {
         final RatingBar simpleRatingBar2 = (RatingBar) findViewById(R.id.ratingBar2);
         Button submitButton2 = (Button) findViewById(R.id.btnGet2);
         //perform click event on button
+        Intent user = getIntent();
+        if (user.hasExtra("username")) {
+             username = user.getStringExtra("username");
+        }
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

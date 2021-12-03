@@ -35,7 +35,7 @@ public class UploadReport extends AppCompatActivity {
     EditText selectPdf, patientName;
     Button uploadBtn, chooseBtn;
 
-
+    String username="";
     StorageReference storageRef;
     DatabaseReference databaseReference;
     DatabaseReference reportEndPoint;
@@ -59,7 +59,6 @@ public class UploadReport extends AppCompatActivity {
                 selectPDF();
             }
         });
-
         activityResultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
@@ -78,6 +77,10 @@ public class UploadReport extends AppCompatActivity {
                     }
                 }
             });
+        Intent user = getIntent();
+        if (user.hasExtra("username")) {
+           username = user.getStringExtra("username");
+        }
     }
 
     private void selectPDF() {

@@ -35,6 +35,8 @@ public class NotificationDoctor extends AppCompatActivity {
     ConstraintLayout doctorHolder;
     private DatabaseReference healventureDatabase;
     private DatabaseReference bookAppointEndPoint;
+    String username = "";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +46,13 @@ public class NotificationDoctor extends AppCompatActivity {
         doctorHolder = findViewById(R.id.doctorHolder);
 
         renderNotif();
+        Intent user = getIntent();
+        if (user.hasExtra("username")) {
+            username = user.getStringExtra("username");
+        } else {
+            Intent mainPage = new Intent(this, Login.class);
+            startActivity(mainPage);
+        }
 
     }
 
@@ -51,11 +60,11 @@ public class NotificationDoctor extends AppCompatActivity {
         bookAppointEndPoint.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if(task.isSuccessful()){
+                if (task.isSuccessful()) {
                     LinearLayout topLayer = new LinearLayout(NotificationDoctor.this);
                     topLayer.setOrientation(LinearLayout.VERTICAL);
-                    for(DataSnapshot doc: task.getResult().getChildren()){
-                        Map<String,String> reports=(HashMap<String, String>)doc.getValue();
+                    for (DataSnapshot doc : task.getResult().getChildren()) {
+                        Map<String, String> reports = (HashMap<String, String>) doc.getValue();
                         LinearLayout reportLinearLayout = new LinearLayout(NotificationDoctor.this);
                         reportLinearLayout.setOrientation(LinearLayout.HORIZONTAL);
                         ImageView pdfIcon = new ImageView(NotificationDoctor.this);
@@ -81,7 +90,7 @@ public class NotificationDoctor extends AppCompatActivity {
                         textView.setTextSize(16);
                         GradientDrawable border = new GradientDrawable();
                         border.setStroke(1, 0xFF000000); //black border with full opacity
-                        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
+                        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
                             reportLinearLayout.setBackgroundDrawable(border);
                         } else {
                             reportLinearLayout.setBackground(border);
@@ -91,11 +100,13 @@ public class NotificationDoctor extends AppCompatActivity {
                         topLayer.addView(reportLinearLayout);
                     }
                     doctorHolder.addView(topLayer);
-                }else{
-                    Toast.makeText(NotificationDoctor.this,"There is no data", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(NotificationDoctor.this, "There is no data", Toast.LENGTH_LONG).show();
                 }
             }
         });
+
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -109,7 +120,7 @@ public class NotificationDoctor extends AppCompatActivity {
             // action with ID action_refresh was selected
             case R.id.profile:
                 Intent mainPage = new Intent(this, Profile.class);
-                mainPage.putExtra("testData","test");
+                mainPage.putExtra("testData", "test");
                 startActivity(mainPage);
 //                Toast.makeText(this, "Refresh selected", Toast.LENGTH_SHORT)
 //                        .show();
@@ -117,11 +128,7 @@ public class NotificationDoctor extends AppCompatActivity {
             // action with ID action_settings was selected
             case R.id.notification:
 
-                Intent mainPage1 = new Intent(this, NotificationPatients.class);
-                mainPage1.putExtra("testData","test");
-                startActivity(mainPage1);
-                Toast.makeText(this, "Settings selected", Toast.LENGTH_SHORT)
-                        .show();
+
                 break;
             default:
                 break;

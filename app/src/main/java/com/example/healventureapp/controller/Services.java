@@ -13,16 +13,22 @@ import com.example.healventureapp.R;
 import com.google.firebase.database.annotations.Nullable;
 
 public class Services extends AppCompatActivity {
+    String username="";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.services);
         this.setTitle("Services");
+        Intent user = getIntent();
+        if (user.hasExtra("username")) {
+             username = user.getStringExtra("username");
+        }
     }
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
         return true;
+
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {

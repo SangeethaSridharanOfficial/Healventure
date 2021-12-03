@@ -68,6 +68,7 @@ public class BookAppointment extends AppCompatActivity {
         }
     }
 
+
     public void onCLickBookApps(View v) {
         String date = date_text.getText().toString();
         String time = txtTim.getText().toString();
