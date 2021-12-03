@@ -36,7 +36,7 @@ public class MyReport extends AppCompatActivity {
     ConstraintLayout reportsHolder;
     private DatabaseReference healventureDatabase;
     private DatabaseReference reportEndPoint;
-    String username;
+    String username="";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +52,8 @@ public class MyReport extends AppCompatActivity {
             startActivity(mainPage);
         }
         renderReports();
+
+
     }
 
     private void renderReports(){

@@ -55,7 +55,6 @@ public class Signup extends AppCompatActivity {
         if(!pwd.getText().toString().equals(cfrmPwd.getText().toString())) result = false;
         return result;
     }
-
     public void registerClicked(View view){
 
         if(validateRegistration() == true){

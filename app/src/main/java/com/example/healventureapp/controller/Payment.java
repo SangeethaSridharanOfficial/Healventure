@@ -20,7 +20,7 @@ import com.google.firebase.database.annotations.Nullable;
 public class Payment extends AppCompatActivity {
 
     EditText amount, nameOnCard,cardNumber, expiry, cvv;
-
+    String username="";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +31,10 @@ public class Payment extends AppCompatActivity {
         cardNumber = findViewById(R.id.card_no_txt);
         expiry = findViewById(R.id.exp);
         cvv = findViewById(R.id.cvv);
-
+        Intent user = getIntent();
+        if (user.hasExtra("username")) {
+         username = user.getStringExtra("username");
+        }
 
     }
     public void payNowClicked(View view) {

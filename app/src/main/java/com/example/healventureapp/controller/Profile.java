@@ -13,11 +13,16 @@ import com.example.healventureapp.R;
 import com.google.firebase.database.annotations.Nullable;
 
 public class Profile extends AppCompatActivity {
+    String username="";
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile);
         this.setTitle("Profile");
+        Intent user = getIntent();
+        if (user.hasExtra("username")) {
+             username = user.getStringExtra("username");
+        }
     }
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.healventureapp.R;
 import com.example.healventureapp.model.LoginModel;
 public class MainPageActivity extends AppCompatActivity {
-    String username;
+    String username="";
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
