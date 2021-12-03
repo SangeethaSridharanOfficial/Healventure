@@ -23,13 +23,19 @@ public class DoctorMainPage extends AppCompatActivity {
     }
     public void onCLickUploadReport(View v){
         Intent mainPage = new Intent(this, UploadReport.class);
-        mainPage.putExtra("testData","test");
+        mainPage.putExtra("username",username);
         startActivity(mainPage);
     }
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.toolbar_menu, menu);
         return true;
+    }
+
+    public void onCLickProfile(View v){
+        Intent mainPage = new Intent(this, Profile.class);
+        mainPage.putExtra("username",username);
+        startActivity(mainPage);
     }
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
