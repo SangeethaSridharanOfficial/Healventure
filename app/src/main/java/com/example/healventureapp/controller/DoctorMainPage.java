@@ -11,13 +11,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.healventureapp.R;
 public class DoctorMainPage extends AppCompatActivity {
+    String username = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.doctor_main_page);
         Intent user = getIntent();
         if (user.hasExtra("username")) {
-            String username = user.getStringExtra("username");
+            username = user.getStringExtra("username");
         }
     }
     public void onCLickUploadReport(View v){
@@ -35,15 +36,13 @@ public class DoctorMainPage extends AppCompatActivity {
             // action with ID action_refresh was selected
             case R.id.profile:
                 Intent mainPage = new Intent(this, Profile.class);
-                mainPage.putExtra("testData","test");
+                mainPage.putExtra("username",username);
                 startActivity(mainPage);
-//                Toast.makeText(this, "Refresh selected", Toast.LENGTH_SHORT)
-//                        .show();
                 break;
             // action with ID action_settings was selected
             case R.id.notification:
                 Intent mainPage1 = new Intent(this, NotificationDoctor.class);
-                mainPage1.putExtra("testData","test");
+                mainPage1.putExtra("username",username);
                 startActivity(mainPage1);
                 Toast.makeText(this, "Settings selected", Toast.LENGTH_SHORT)
                         .show();
